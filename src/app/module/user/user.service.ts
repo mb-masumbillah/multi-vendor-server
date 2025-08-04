@@ -31,7 +31,6 @@ const createVendorIntoDB = async (payload: TVendorDetails, userInfo: TUser) => {
   userData.gender = userInfo?.gender;
   userData.number = userInfo?.number;
 
-  
   const user = await User.isUserExsit(userInfo?.email);
 
   if (user) {
@@ -68,7 +67,33 @@ const createVendorIntoDB = async (payload: TVendorDetails, userInfo: TUser) => {
     throw new Error(error);
   }
 };
+
+
+const getAllUserIntoDB = async () =>{
+  const result = await User.find()
+  return result
+}
+
+
+const getMeIntoDB = async (email: string, role: string) => {
+  let result = null;
+
+  if (role === 'user') {
+    result = await User.findOne({ email: email });
+  }
+  if (role === 'admin') {
+    result = await User.findOne({ email: email });
+  }
+  if (role === 'vendor') {
+    result = await User.findOne({ email: email });
+  }
+
+  return result;
+};
+
 export const userService = {
   createUserIntoDB,
   createVendorIntoDB,
+  getAllUserIntoDB,
+   getMeIntoDB,
 };

@@ -1,9 +1,9 @@
-import { Router } from 'express';
+import express from 'express';
 import { authController } from './auth.controller';
 import validationRequest from '../../../middleware/validationRequest';
 import { createUserTokenValidation } from './auth.zod';
 
-const router = Router();
+const router = express.Router();
 
 router.post(
   '/',

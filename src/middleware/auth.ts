@@ -26,7 +26,7 @@ const auth = (...requiredRole: TUserRole[]) => {
       throw new AppError(StatusCodes.UNAUTHORIZED, 'UNAUTHORIZED');
     }
 
-    const { role, userEmail, iat } = decoded;
+    const { role, userEmail } = decoded;
 
     const user = await User.isUserExsit(userEmail);
 

@@ -8,6 +8,7 @@ import jwt from 'jsonwebtoken';
 const createTokenIntoService = async (payload: TLoginUser) => {
   const user = await User.isUserExsit(payload?.email);
  
+  console.log({user})
 
   if (!user) {
     throw new AppError(StatusCodes.CONFLICT, 'User not Found');
